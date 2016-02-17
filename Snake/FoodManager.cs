@@ -42,13 +42,7 @@ namespace Snake
         {
             for(int i=0;i<Amount;i++)
             {
-                int X = r.Next(m_GameWidth - m_CircleRadius);
-                int Y = r.Next(m_GameHeight - m_CircleRadius);
-                int ix = X / m_CircleRadius; //Use truncating to snap to grid
-                int iy = Y / m_CircleRadius;
-                X = ix * m_CircleRadius;
-                Y = iy * m_CircleRadius;
-                m_FoodPellets.Add(new FoodPellet(X, Y));
+                AddRandomFood();
             }
         }
         public bool IsIntersectingRect(Rectangle rect, bool RemoveFood)
