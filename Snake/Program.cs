@@ -10,6 +10,7 @@ namespace Snake
     {
         /// <summary>
         /// The main entry point for the application.
+        /// Initializes the application and opens the Snake game window.
         /// </summary>
         [STAThread]
         static void Main()
