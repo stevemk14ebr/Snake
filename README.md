@@ -1,3 +1,7 @@
 # Snake
 C# Snake Game
-![alt tag](http://i.imgur.com/o35fyHn.png)
+![alt tag](https://imgur.com/MtQlmmr)
+![alt tag](https://imgur.com/SzsS4bj)
+![alt tag](https://imgur.com/qxzhbVR)
+![alt tag](https://imgur.com/zxd75Vq)
+![alt tag](https://imgur.com/PbDBzma)
