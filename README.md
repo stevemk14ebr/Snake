@@ -1,8 +1,7 @@
 # Snake
 C# Snake Game
-<img src="https://imgur.com/MtQlmmr">
-![alt tag](https://imgur.com/MtQlmmr)
-![alt tag](https://imgur.com/SzsS4bj)
-![alt tag](https://imgur.com/qxzhbVR)
-![alt tag](https://imgur.com/zxd75Vq)
-![alt tag](https://imgur.com/PbDBzma)
+![Snake Home](https://imgur.com/MtQlmmr)
+![Snake Tutorial/Controls](https://imgur.com/SzsS4bj)
+![Snake Game](https://imgur.com/qxzhbVR)
+![Snek Game](https://imgur.com/zxd75Vq)
+![Snake Game Over](https://imgur.com/PbDBzma)
