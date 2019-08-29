@@ -49,20 +49,53 @@
     <Compile Include="BodyPart.cs" />
     <Compile Include="FoodManager.cs" />
     <Compile Include="FoodPellet.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
+    <Compile Include="GameOverUC.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="GameOverUC.Designer.cs">
+      <DependentUpon>GameOverUC.cs</DependentUpon>
     </Compile>
     <Compile Include="GamePart.cs" />
+    <Compile Include="GameUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GameUC.Designer.cs">
+      <DependentUpon>GameUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HomeUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HomeUC.Designer.cs">
+      <DependentUpon>HomeUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Input.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SnakePlayer.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="TutorialUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TutorialUC.Designer.cs">
+      <DependentUpon>TutorialUC.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="GameOverUC.resx">
+      <DependentUpon>GameOverUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GameUC.resx">
+      <DependentUpon>GameUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HomeUC.resx">
+      <DependentUpon>HomeUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -72,7 +105,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TutorialUC.resx">
+      <DependentUpon>TutorialUC.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -85,6 +122,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\DizzyPixelSnake.png" />
+    <Content Include="Resources\PixelControls.png" />
+    <Content Include="Resources\PixelSnake.PNG" />
+    <Content Include="Resources\pixelsnakeICO.ico" />
+    <Content Include="Resources\PixelSnakeTitle.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

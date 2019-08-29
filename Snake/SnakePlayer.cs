@@ -29,18 +29,18 @@ namespace Snake
         private const int m_CircleRadius = 20; // Determines body part size
         private Direction m_MoveDirection = Direction.none; // Direction of the head
         private int m_PendingSegments; // Number of body parts in queue to be added to the snake
-        private SnakeForm GameForm = null; // Stores the GUI form
+        private Snake GameForm = null; // Stores the GUI form
 
         /// <summary>
         /// Object constructor
         /// </summary>
         /// <param name="Form">GUI form for the game</param>
-        public SnakePlayer(SnakeForm Form)
+        public SnakePlayer(Snake Form)
         {
             // Add 3 body parts to the snake because the snake begins small
-            m_SnakeParts.Add(new BodyPart(100, 0, Direction.right));
-            m_SnakeParts.Add(new BodyPart(80, 0, Direction.right));
-            m_SnakeParts.Add(new BodyPart(60, 0, Direction.right));
+            m_SnakeParts.Add(new BodyPart(100, 200, Direction.right));
+            m_SnakeParts.Add(new BodyPart(80, 200, Direction.right));
+            m_SnakeParts.Add(new BodyPart(60, 200, Direction.right));
 
             // Need to give an initial direction
             m_MoveDirection = Direction.right;
@@ -70,14 +70,14 @@ namespace Snake
             if (m_PendingSegments > 0)
             {
                 Point LastPos = m_SnakeParts.Last().GetPosition(); // Adds the body part to the tail
-                m_SnakeParts.Add(new BodyPart(LastPos.X,LastPos.Y));
+                m_SnakeParts.Add(new BodyPart(LastPos.X, LastPos.Y));
                 m_PendingSegments--;
             }
-            
+
             m_SnakeParts[0].m_Dir = m_MoveDirection; // Set the head direction
 
             // Moves each snake body part
-            for (int i = m_SnakeParts.Count-1; i>=0 ;i--)
+            for (int i = m_SnakeParts.Count - 1; i >= 0; i--)
             {
                 // Translates the body part in accordance with its direction
                 switch (m_SnakeParts[i].m_Dir)
@@ -101,7 +101,7 @@ namespace Snake
                 // Set the direction of the next part to be the direction of the previous
                 // for snake-like movement
                 if (i > 0)
-                        m_SnakeParts[i].m_Dir = m_SnakeParts[i - 1].m_Dir;
+                    m_SnakeParts[i].m_Dir = m_SnakeParts[i - 1].m_Dir;
             }
             if (IsSelfIntersecting()) // Check for collisions with itself
                 OnHitSelf(); // If so, trigger the game-over screen
@@ -114,11 +114,11 @@ namespace Snake
         public bool IsSelfIntersecting()
         {
             // Check each snake body part with every other snake body part
-            for(int i=0;i < m_SnakeParts.Count;i++)
+            for (int i = 0; i < m_SnakeParts.Count; i++)
             {
-                for (int j = 0;j < m_SnakeParts.Count; j++)
+                for (int j = 0; j < m_SnakeParts.Count; j++)
                 {
-                    if(i == j) // Do not want to check a body part with itself
+                    if (i == j) // Do not want to check a body part with itself
                         continue;
                     BodyPart part1 = m_SnakeParts[i];
                     BodyPart part2 = m_SnakeParts[j];
@@ -162,7 +162,7 @@ namespace Snake
         /// <returns>Whether there was an intersection</returns>
         public bool IsIntersectingRect(Rectangle rect)
         {
-            foreach(BodyPart Part in m_SnakeParts) // Check each snake body part
+            foreach (BodyPart Part in m_SnakeParts) // Check each snake body part
             {
                 Point PartPos = Part.GetPosition();
 
@@ -180,7 +180,7 @@ namespace Snake
         public void OnHitWall(Direction WhichWall)
         {
             GameForm.ToggleTimer(); // No timer visible on game-over screen
-            MessageBox.Show("Hit Wall- GAME OVER"); // Display game-over message
+            //MessageBox.Show("Hit Wall- GAME OVER"); // Display game-over message
             GameForm.ResetGame();
         }
 
@@ -190,9 +190,10 @@ namespace Snake
         /// <param name="canvas">The graphics object to render on</param>
         public void Draw(Graphics canvas)
         {
-            Brush SnakeColor = Brushes.Black;
+            Random _rand = new Random();
+            SolidBrush SnakeColor = new SolidBrush(Color.FromArgb(_rand.Next(100, 256), 0, 0));
             List<Rectangle> Rects = GetRects(); // Get the snake body parts, represented as rectangles
-            foreach(Rectangle Part in Rects) // Draw each snake body part
+            foreach (Rectangle Part in Rects) // Draw each snake body part
             {
                 canvas.FillEllipse(SnakeColor, Part); // Draw the snake parts as ellipses
             }
@@ -204,7 +205,7 @@ namespace Snake
         public void OnHitSelf()
         {
             GameForm.ToggleTimer(); // No timer visible on game-over screen
-            MessageBox.Show("Hit SELF- GAME OVER"); // Display game-over message
+            //MessageBox.Show("Hit SELF- GAME OVER"); // Display game-over message
             GameForm.ResetGame();
         }
 
@@ -223,6 +224,6 @@ namespace Snake
                 Rects.Add(new Rectangle(PartPos.X, PartPos.Y, m_CircleRadius, m_CircleRadius));
             }
             return Rects;
-        } 
+        }
     }
 }
