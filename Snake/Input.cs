@@ -35,7 +35,7 @@ namespace Snake
         /// </summary>
         /// <param name="key">Key to set</param>
         /// <param name="IsDown">Value to set the key to, true meaning pressed</param>
-        public static void SetKey(Keys key,bool IsDown)
+        public static void SetKey(Keys key, bool IsDown)
         {
             KeyTable[key] = IsDown;
         }

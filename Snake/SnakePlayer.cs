@@ -13,11 +13,11 @@ namespace Snake
     /// </summary>
     public enum Direction
     {
-        left,
-        right,
-        up,
-        down,
-        none
+        Left,
+        Right,
+        Up,
+        Down,
+        None
     }
 
     /// <summary>
@@ -27,9 +27,9 @@ namespace Snake
     {
         private List<BodyPart> m_SnakeParts = new List<BodyPart>(); // Collection of current snake body parts
         private const int m_CircleRadius = 20; // Determines body part size
-        private Direction m_MoveDirection = Direction.none; // Direction of the head
+        private Direction m_MoveDirection = Direction.None; // Direction of the head
         private int m_PendingSegments; // Number of body parts in queue to be added to the snake
-        private Snake GameForm = null; // Stores the GUI form
+        private readonly Snake GameForm = null; // Stores the GUI form
 
         /// <summary>
         /// Object constructor
@@ -37,13 +37,15 @@ namespace Snake
         /// <param name="Form">GUI form for the game</param>
         public SnakePlayer(Snake Form)
         {
+            const int START_SNAKE_BODYPART_COUNT = 5;
             // Add 3 body parts to the snake because the snake begins small
-            m_SnakeParts.Add(new BodyPart(100, 200, Direction.right));
-            m_SnakeParts.Add(new BodyPart(80, 200, Direction.right));
-            m_SnakeParts.Add(new BodyPart(60, 200, Direction.right));
+            for (int i = 0; i < START_SNAKE_BODYPART_COUNT; i++)
+            {
+                m_SnakeParts.Add(new BodyPart(100 - i * 20, 200, Direction.Right));
+            }
 
             // Need to give an initial direction
-            m_MoveDirection = Direction.right;
+            m_MoveDirection = Direction.Right;
 
             // Currently no body parts queued to be added
             m_PendingSegments = 0;
@@ -66,10 +68,10 @@ namespace Snake
         public void MovePlayer()
         {
             // Adds any pending body parts. Note that this processes one body part at a time;
-            // if m_PendingSegments > 1, it will require more than one frame to process completely.
+            // if m_PendingSegments > 0, it will require more than one frame to process completely.
             if (m_PendingSegments > 0)
             {
-                Point LastPos = m_SnakeParts.Last().GetPosition(); // Adds the body part to the tail
+                Point LastPos = m_SnakeParts[m_SnakeParts.Count - 1].GetPosition(); // Adds the body part to the tail
                 m_SnakeParts.Add(new BodyPart(LastPos.X, LastPos.Y));
                 m_PendingSegments--;
             }
@@ -82,16 +84,16 @@ namespace Snake
                 // Translates the body part in accordance with its direction
                 switch (m_SnakeParts[i].m_Dir)
                 {
-                    case Direction.left:
+                    case Direction.Left:
                         m_SnakeParts[i].AddPosition(new Point(-20, 0));
                         break;
-                    case Direction.right:
+                    case Direction.Right:
                         m_SnakeParts[i].AddPosition(new Point(20, 0));
                         break;
-                    case Direction.down:
+                    case Direction.Down:
                         m_SnakeParts[i].AddPosition(new Point(0, 20));
                         break;
-                    case Direction.up:
+                    case Direction.Up:
                         m_SnakeParts[i].AddPosition(new Point(0, -20));
                         break;
                     default:
@@ -116,10 +118,8 @@ namespace Snake
             // Check each snake body part with every other snake body part
             for (int i = 0; i < m_SnakeParts.Count; i++)
             {
-                for (int j = 0; j < m_SnakeParts.Count; j++)
+                for (int j = i + 1; j < m_SnakeParts.Count; j++)
                 {
-                    if (i == j) // Do not want to check a body part with itself
-                        continue;
                     BodyPart part1 = m_SnakeParts[i];
                     BodyPart part2 = m_SnakeParts[j];
 
@@ -139,16 +139,16 @@ namespace Snake
         public void SetDirection(Direction Dir)
         {
             // Forbid 180 degree turns
-            if (m_MoveDirection == Direction.left && Dir == Direction.right)
+            if (m_MoveDirection == Direction.Left && Dir == Direction.Right)
                 return;
 
-            if (m_MoveDirection == Direction.right && Dir == Direction.left)
+            if (m_MoveDirection == Direction.Right && Dir == Direction.Left)
                 return;
 
-            if (m_MoveDirection == Direction.up && Dir == Direction.down)
+            if (m_MoveDirection == Direction.Up && Dir == Direction.Down)
                 return;
 
-            if (m_MoveDirection == Direction.down && Dir == Direction.up)
+            if (m_MoveDirection == Direction.Down && Dir == Direction.Up)
                 return;
 
             // Set the direction if the direction change is legal

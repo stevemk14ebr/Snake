@@ -13,9 +13,9 @@ namespace Snake
     public partial class mainForm : Form
     {
         HomeUC homeUC = new HomeUC();
-        Snake gameUC = new Snake();
-        TutorialUC tutorialUC = new TutorialUC();
-        GameOverUC gameOverUC = new GameOverUC();
+        readonly Snake gameUC = new Snake();
+        readonly TutorialUC tutorialUC = new TutorialUC();
+        readonly GameOverUC gameOverUC = new GameOverUC();
 
         public mainForm()
         {

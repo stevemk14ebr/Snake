@@ -35,7 +35,7 @@ namespace Snake
         /// <param name="Y">Y coordinate of the body part</param>
         public BodyPart(int X, int Y):base(X,Y)
         {
-            m_Dir = Direction.none;
+            m_Dir = Direction.None;
         }
     }
 }

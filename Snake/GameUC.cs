@@ -68,16 +68,16 @@ namespace Snake
         private void CheckForCollisions()
         {
             if (Player1.IsIntersectingRect(new Rectangle(-100, 0, 100, GameCanvas.Height)))
-                Player1.OnHitWall(Direction.left);
+                Player1.OnHitWall(Direction.Left);
 
             if (Player1.IsIntersectingRect(new Rectangle(0, -100, GameCanvas.Width, 100)))
-                Player1.OnHitWall(Direction.up);
+                Player1.OnHitWall(Direction.Up);
 
             if (Player1.IsIntersectingRect(new Rectangle(GameCanvas.Width, 0, 100, GameCanvas.Height)))
-                Player1.OnHitWall(Direction.right);
+                Player1.OnHitWall(Direction.Right);
 
             if (Player1.IsIntersectingRect(new Rectangle(0, GameCanvas.Height, GameCanvas.Width, 100)))
-                Player1.OnHitWall(Direction.down);
+                Player1.OnHitWall(Direction.Down);
 
             //Is hitting food
             List<Rectangle> SnakeRects = Player1.GetRects();
@@ -97,19 +97,19 @@ namespace Snake
         {
             if (Input.IsKeyDown(Keys.Left) || Input.IsKeyDown(Keys.A))
             {
-                Player1.SetDirection(Direction.left);
+                Player1.SetDirection(Direction.Left);
             }
             else if (Input.IsKeyDown(Keys.Right) || Input.IsKeyDown(Keys.D))
             {
-                Player1.SetDirection(Direction.right);
+                Player1.SetDirection(Direction.Right);
             }
             else if (Input.IsKeyDown(Keys.Up) || Input.IsKeyDown(Keys.W))
             {
-                Player1.SetDirection(Direction.up);
+                Player1.SetDirection(Direction.Up);
             }
             else if (Input.IsKeyDown(Keys.Down) || Input.IsKeyDown(Keys.S))
             {
-                Player1.SetDirection(Direction.down);
+                Player1.SetDirection(Direction.Down);
             }
             Player1.MovePlayer();
         }
