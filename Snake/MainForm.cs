@@ -25,6 +25,8 @@ namespace Snake
             gameUC.homeForm = this;
             tutorialUC.homeForm = this;
             gameOverUC.homeForm = this;
+            KeyPreview = true;
+            KeyDown += gameUC.Snake_KeyDown;
         }
 
         internal void Home()

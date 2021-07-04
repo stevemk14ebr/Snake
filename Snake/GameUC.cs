@@ -47,15 +47,11 @@ namespace Snake
         public bool PreFilterMessage(ref Message msg)
         {
             Console.WriteLine((Keys)0x0101 == Keys.Up);
-            if (msg.Msg == 0x0101) //KeyUp
-                Input.SetKey((Keys)msg.WParam, false);
             return false;
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if (msg.Msg == 0x100) //KeyDown
-                Input.SetKey((Keys)msg.WParam, true);
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
@@ -96,22 +92,22 @@ namespace Snake
 
         private void SetPlayerMovement()
         {
-            if (Input.IsKeyDown(Keys.Left) || Input.IsKeyDown(Keys.A))
-            {
-                player.SetDirection(Direction.Left);
-            }
-            else if (Input.IsKeyDown(Keys.Right) || Input.IsKeyDown(Keys.D))
-            {
-                player.SetDirection(Direction.Right);
-            }
-            else if (Input.IsKeyDown(Keys.Up) || Input.IsKeyDown(Keys.W))
-            {
-                player.SetDirection(Direction.Up);
-            }
-            else if (Input.IsKeyDown(Keys.Down) || Input.IsKeyDown(Keys.S))
-            {
-                player.SetDirection(Direction.Down);
-            }
+            //if (Input.IsKeyDown(Keys.Left) || Input.IsKeyDown(Keys.A))
+            //{
+            //    player.SetDirection(Direction.Left);
+            //}
+            //else if (Input.IsKeyDown(Keys.Right) || Input.IsKeyDown(Keys.D))
+            //{
+            //    player.SetDirection(Direction.Right);
+            //}
+            //else if (Input.IsKeyDown(Keys.Up) || Input.IsKeyDown(Keys.W))
+            //{
+            //    player.SetDirection(Direction.Up);
+            //}
+            //else if (Input.IsKeyDown(Keys.Down) || Input.IsKeyDown(Keys.S))
+            //{
+            //    player.SetDirection(Direction.Down);
+            //}
             player.MovePlayer();
         }
 
@@ -157,6 +153,28 @@ namespace Snake
         {
             homeForm.Show();
             homeForm.Home();
+        }
+
+        public void Snake_KeyDown(object sender, KeyEventArgs e)
+        {
+            Keys code = e.KeyCode;
+            lineText.Text = "Apple";
+            if (code == Keys.Left || code == Keys.A)
+            {
+                player.SetDirection(Direction.Left);
+            }
+            else if (code == Keys.Right || code == Keys.D)
+            {
+                player.SetDirection(Direction.Right);
+            }
+            else if (code == Keys.Up || code == Keys.W)
+            {
+                player.SetDirection(Direction.Up);
+            }
+            else if (code == Keys.Down || code == Keys.S)
+            {
+                player.SetDirection(Direction.Down);
+            }
         }
     }
 }

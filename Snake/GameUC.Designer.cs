@@ -37,6 +37,7 @@
             this.ScoreLbl = new System.Windows.Forms.Label();
             this.btn_Home = new System.Windows.Forms.Button();
             this.howDareYouLabel = new System.Windows.Forms.Label();
+            this.lineText = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.GameCanvas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,7 +46,7 @@
             this.GameCanvas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.GameCanvas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.GameCanvas.Location = new System.Drawing.Point(5, 9);
-            this.GameCanvas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GameCanvas.Margin = new System.Windows.Forms.Padding(4);
             this.GameCanvas.Name = "GameCanvas";
             this.GameCanvas.Size = new System.Drawing.Size(787, 536);
             this.GameCanvas.TabIndex = 0;
@@ -62,7 +63,7 @@
             this.Start_Btn.BackColor = System.Drawing.Color.Firebrick;
             this.Start_Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Start_Btn.Location = new System.Drawing.Point(801, 40);
-            this.Start_Btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Start_Btn.Margin = new System.Windows.Forms.Padding(4);
             this.Start_Btn.Name = "Start_Btn";
             this.Start_Btn.Size = new System.Drawing.Size(273, 28);
             this.Start_Btn.TabIndex = 1;
@@ -75,7 +76,7 @@
             this.DareBtn.BackColor = System.Drawing.Color.Firebrick;
             this.DareBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DareBtn.Location = new System.Drawing.Point(799, 515);
-            this.DareBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DareBtn.Margin = new System.Windows.Forms.Padding(4);
             this.DareBtn.Name = "DareBtn";
             this.DareBtn.Size = new System.Drawing.Size(275, 28);
             this.DareBtn.TabIndex = 2;
@@ -87,7 +88,7 @@
             // 
             this.ScoreTxtBox.Enabled = false;
             this.ScoreTxtBox.Location = new System.Drawing.Point(859, 76);
-            this.ScoreTxtBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ScoreTxtBox.Margin = new System.Windows.Forms.Padding(4);
             this.ScoreTxtBox.Name = "ScoreTxtBox";
             this.ScoreTxtBox.ReadOnly = true;
             this.ScoreTxtBox.Size = new System.Drawing.Size(213, 22);
@@ -109,7 +110,7 @@
             this.btn_Home.BackColor = System.Drawing.Color.Firebrick;
             this.btn_Home.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Home.Location = new System.Drawing.Point(801, 9);
-            this.btn_Home.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Home.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Home.Name = "btn_Home";
             this.btn_Home.Size = new System.Drawing.Size(273, 28);
             this.btn_Home.TabIndex = 5;
@@ -117,7 +118,7 @@
             this.btn_Home.UseVisualStyleBackColor = false;
             this.btn_Home.Click += new System.EventHandler(this.btn_Home_Click);
             // 
-            // lbl_Game
+            // howDareYouLabel
             // 
             this.howDareYouLabel.AutoSize = true;
             this.howDareYouLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -125,9 +126,16 @@
             this.howDareYouLabel.Location = new System.Drawing.Point(803, 114);
             this.howDareYouLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.howDareYouLabel.MaximumSize = new System.Drawing.Size(243, 234);
-            this.howDareYouLabel.Name = "lbl_Game";
+            this.howDareYouLabel.Name = "howDareYouLabel";
             this.howDareYouLabel.Size = new System.Drawing.Size(0, 25);
             this.howDareYouLabel.TabIndex = 6;
+            // 
+            // lineText
+            // 
+            this.lineText.Location = new System.Drawing.Point(799, 201);
+            this.lineText.Name = "lineText";
+            this.lineText.Size = new System.Drawing.Size(273, 22);
+            this.lineText.TabIndex = 7;
             // 
             // Snake
             // 
@@ -135,6 +143,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Black;
+            this.Controls.Add(this.lineText);
             this.Controls.Add(this.howDareYouLabel);
             this.Controls.Add(this.btn_Home);
             this.Controls.Add(this.ScoreLbl);
@@ -142,13 +151,14 @@
             this.Controls.Add(this.DareBtn);
             this.Controls.Add(this.Start_Btn);
             this.Controls.Add(this.GameCanvas);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Snake";
             this.Size = new System.Drawing.Size(1081, 552);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Snake_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.GameCanvas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -161,5 +171,6 @@
         private System.Windows.Forms.Label ScoreLbl;
         private System.Windows.Forms.Button btn_Home;
         private System.Windows.Forms.Label howDareYouLabel;
+        private System.Windows.Forms.TextBox lineText;
     }
 }
