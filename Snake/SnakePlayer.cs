@@ -135,24 +135,24 @@ namespace Snake
         /// <summary>
         /// Sets the direction of the snake head
         /// </summary>
-        /// <param name="Dir">Direction to set the head to</param>
-        public void SetDirection(Direction Dir)
+        /// <param name="direction">Direction to set the head to</param>
+        public void SetDirection(Direction direction)
         {
             // Forbid 180 degree turns
-            if (m_MoveDirection == Direction.Left && Dir == Direction.Right)
+            if (m_MoveDirection == Direction.Left && direction == Direction.Right)
                 return;
 
-            if (m_MoveDirection == Direction.Right && Dir == Direction.Left)
+            if (m_MoveDirection == Direction.Right && direction == Direction.Left)
                 return;
 
-            if (m_MoveDirection == Direction.Up && Dir == Direction.Down)
+            if (m_MoveDirection == Direction.Up && direction == Direction.Down)
                 return;
 
-            if (m_MoveDirection == Direction.Down && Dir == Direction.Up)
+            if (m_MoveDirection == Direction.Down && direction == Direction.Up)
                 return;
 
             // Set the direction if the direction change is legal
-            m_MoveDirection = Dir;
+            m_MoveDirection = direction;
         }
 
         /// <summary>

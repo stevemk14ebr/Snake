@@ -12,7 +12,7 @@ namespace Snake
 {
     public partial class HomeUC : UserControl
     {
-        public mainForm homeForm { get; set; }
+        public MainForm homeForm { get; set; }
 
         public HomeUC()
         {

@@ -12,7 +12,7 @@ namespace Snake
 {
     public partial class GameOverUC : UserControl
     {
-        public mainForm homeForm { get; set; }
+        public MainForm homeForm { get; set; }
 
         public GameOverUC()
         {

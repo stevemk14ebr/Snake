@@ -39,7 +39,6 @@ namespace Snake
         /// <param name="point">Point to set</param>
         public void SetPosition(Point point)
         {
-    
             Position = point;
         }
 
