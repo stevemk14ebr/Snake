@@ -13,6 +13,7 @@ namespace Snake
 {
     public partial class Snake : UserControl, IMessageFilter
     {
+        public event Action<int> DifficultyChanged;
         public MainForm homeForm { get; set; }
         SnakePlayer player;
         FoodManager foodManager;
@@ -26,6 +27,7 @@ namespace Snake
             foodManager = new FoodManager(GameCanvas.Width, GameCanvas.Height);
             foodManager.AddRandomFood(10);
             ScoreTxtBox.Text = score.ToString();
+            DifficultyChanged += SetTimer;
         }
 
         public void ToggleTimer()
@@ -123,6 +125,10 @@ namespace Snake
             ToggleTimer();
         }
 
+        private void SetTimer(int val)
+        {
+            this.GameTimer.Interval = val;
+        }
         private void HowDareYouButtonClick(object sender, EventArgs e)
         {
             int index = r.Next(4);
@@ -158,7 +164,6 @@ namespace Snake
         public void Snake_KeyDown(object sender, KeyEventArgs e)
         {
             Keys code = e.KeyCode;
-            lineText.Text = "Apple";
             if (code == Keys.Left || code == Keys.A)
             {
                 player.SetDirection(Direction.Left);
@@ -174,6 +179,30 @@ namespace Snake
             else if (code == Keys.Down || code == Keys.S)
             {
                 player.SetDirection(Direction.Down);
+            }
+        }
+
+        private void easyButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if ((sender as RadioButton).Checked)
+            {
+                DifficultyChanged?.Invoke(150);
+            }
+        }
+
+        private void mediumButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if ((sender as RadioButton).Checked)
+            {
+                DifficultyChanged?.Invoke(75);
+            }
+        }
+
+        private void hardButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if ((sender as RadioButton).Checked)
+            {
+                DifficultyChanged?.Invoke(25);
             }
         }
     }
