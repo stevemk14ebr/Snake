@@ -182,25 +182,23 @@ namespace Snake
             }
         }
 
-        private void easyButton_CheckedChanged(object sender, EventArgs e)
-        {
-            if ((sender as RadioButton).Checked)
-            {
-                DifficultyChanged?.Invoke(150);
-            }
-        }
 
-        private void mediumButton_CheckedChanged(object sender, EventArgs e)
+        private void difficultyComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if ((sender as RadioButton).Checked)
+            string chosenDifficulty = (sender as ComboBox).Text;
+            if (chosenDifficulty == "Easy")
+            {
+                DifficultyChanged?.Invoke(200);
+            }
+            else if (chosenDifficulty == "Medium")
+            {
+                DifficultyChanged?.Invoke(125);
+            }
+            else if (chosenDifficulty == "Hard")
             {
                 DifficultyChanged?.Invoke(75);
             }
-        }
-
-        private void hardButton_CheckedChanged(object sender, EventArgs e)
-        {
-            if ((sender as RadioButton).Checked)
+            else if (chosenDifficulty == "Master")
             {
                 DifficultyChanged?.Invoke(25);
             }

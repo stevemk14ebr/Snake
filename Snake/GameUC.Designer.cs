@@ -38,9 +38,9 @@
             this.btn_Home = new System.Windows.Forms.Button();
             this.howDareYouLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.easyButton = new System.Windows.Forms.RadioButton();
-            this.mediumButton = new System.Windows.Forms.RadioButton();
-            this.hardButton = new System.Windows.Forms.RadioButton();
+
+            this.difficultyComboBox = new System.Windows.Forms.ComboBox();
+
             ((System.ComponentModel.ISupportInitialize)(this.GameCanvas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -143,44 +143,20 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Difficulty: ";
             // 
-            // easyButton
+            // difficultyComboBox
             // 
-            this.easyButton.AutoSize = true;
-            this.easyButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.easyButton.Location = new System.Drawing.Point(808, 143);
-            this.easyButton.Name = "easyButton";
-            this.easyButton.Size = new System.Drawing.Size(60, 21);
-            this.easyButton.TabIndex = 11;
-            this.easyButton.TabStop = true;
-            this.easyButton.Text = "Easy";
-            this.easyButton.UseVisualStyleBackColor = true;
-            this.easyButton.CheckedChanged += new System.EventHandler(this.easyButton_CheckedChanged);
-            // 
-            // mediumButton
-            // 
-            this.mediumButton.AutoSize = true;
-            this.mediumButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.mediumButton.Location = new System.Drawing.Point(808, 170);
-            this.mediumButton.Name = "mediumButton";
-            this.mediumButton.Size = new System.Drawing.Size(78, 21);
-            this.mediumButton.TabIndex = 12;
-            this.mediumButton.TabStop = true;
-            this.mediumButton.Text = "Medium";
-            this.mediumButton.UseVisualStyleBackColor = true;
-            this.mediumButton.CheckedChanged += new System.EventHandler(this.mediumButton_CheckedChanged);
-            // 
-            // hardButton
-            // 
-            this.hardButton.AutoSize = true;
-            this.hardButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.hardButton.Location = new System.Drawing.Point(808, 197);
-            this.hardButton.Name = "hardButton";
-            this.hardButton.Size = new System.Drawing.Size(60, 21);
-            this.hardButton.TabIndex = 13;
-            this.hardButton.TabStop = true;
-            this.hardButton.Text = "Hard";
-            this.hardButton.UseVisualStyleBackColor = true;
-            this.hardButton.CheckedChanged += new System.EventHandler(this.hardButton_CheckedChanged);
+            this.difficultyComboBox.FormattingEnabled = true;
+            this.difficultyComboBox.Items.AddRange(new object[] {
+            "Easy",
+            "Medium",
+            "Hard",
+            "Master"});
+            this.difficultyComboBox.Location = new System.Drawing.Point(879, 111);
+            this.difficultyComboBox.Name = "difficultyComboBox";
+            this.difficultyComboBox.Size = new System.Drawing.Size(193, 24);
+            this.difficultyComboBox.TabIndex = 8;
+            this.difficultyComboBox.Text = "Easy";
+            this.difficultyComboBox.SelectedIndexChanged += new System.EventHandler(this.difficultyComboBox_SelectedIndexChanged);
             // 
             // Snake
             // 
@@ -188,9 +164,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Black;
-            this.Controls.Add(this.hardButton);
-            this.Controls.Add(this.mediumButton);
-            this.Controls.Add(this.easyButton);
+
+            this.Controls.Add(this.difficultyComboBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.howDareYouLabel);
             this.Controls.Add(this.btn_Home);
@@ -221,8 +196,6 @@
         private System.Windows.Forms.Button btn_Home;
         private System.Windows.Forms.Label howDareYouLabel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RadioButton easyButton;
-        private System.Windows.Forms.RadioButton mediumButton;
-        private System.Windows.Forms.RadioButton hardButton;
+        private System.Windows.Forms.ComboBox difficultyComboBox;
     }
 }
